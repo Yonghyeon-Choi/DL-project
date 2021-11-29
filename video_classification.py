@@ -1,5 +1,6 @@
 from tensorflow import keras
 from tensorflow.keras.optimizers import Adam
+import tensorflow as tf
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -14,8 +15,8 @@ import os
 """
 
 LEARNING_RATE = 3e-4
-BATCH_SIZE = 64
-EPOCHS = 100
+BATCH_SIZE = 128
+EPOCHS = 1000
 
 IMG_SIZE = 299
 MAX_SEQ_LENGTH = 1
@@ -248,7 +249,7 @@ test_tags = test_df["tag"].values.tolist()
 for i in range(len(test_videos)):
     print()
     result.write("\n")
-    print(f"{i} Test video path: {test_videos[i]}")
+    print(f"{i+1} Test video path: {test_videos[i]}")
     result.write(f"{i} Test video path: {test_videos[i]}\n")
     print(f"  Actual: {test_tags[i]}")
     result.write(f"  Actual: {test_tags[i]}\n")
