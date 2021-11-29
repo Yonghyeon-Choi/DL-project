@@ -123,7 +123,6 @@ def prepare_all_videos(df, root_dir):
 
         frame_features[idx,] = temp_frame_features.squeeze()
         frame_masks[idx,] = temp_frame_mask.squeeze()
-        print(idx+1, video_paths)
     return (frame_features, frame_masks), labels
 
 
