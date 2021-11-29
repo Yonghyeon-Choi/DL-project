@@ -15,7 +15,7 @@ import os
 
 LEARNING_RATE = 3e-4
 BATCH_SIZE = 64
-EPOCHS = 500
+EPOCHS = 100
 
 IMG_SIZE = 299
 MAX_SEQ_LENGTH = 1
@@ -129,13 +129,13 @@ def prepare_all_videos(df, root_dir):
 
 print()
 print("prepare train data")
-train_data, train_labels = prepare_all_videos(train_df, os.path.join("dataset", "train"))
+train_data, train_labels = prepare_all_videos(train_df, os.path.join("video", "train"))
 print()
 print("prepare val data")
-val_data, val_labels = prepare_all_videos(val_df, os.path.join("dataset", "val"))
+val_data, val_labels = prepare_all_videos(val_df, os.path.join("video", "val"))
 print()
 print("prepare test data")
-test_data, test_labels = prepare_all_videos(test_df, os.path.join("dataset", "test"))
+test_data, test_labels = prepare_all_videos(test_df, os.path.join("video", "test"))
 
 print(f"Frame features in train set: {train_data[0].shape}")
 print(f"Frame masks in train set: {train_data[1].shape}")
@@ -234,7 +234,7 @@ def prepare_single_video(frames):
 def sequence_prediction(path):
     class_vocab = label_processor.get_vocabulary()
 
-    frames = load_video(os.path.join("dataset", "test", path))
+    frames = load_video(os.path.join("video", "test", path))
     frame_features, frame_mask = prepare_single_video(frames)
     probabilities = sequence_model.predict([frame_features, frame_mask])[0]
 
