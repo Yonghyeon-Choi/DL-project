@@ -15,7 +15,7 @@ import os
 """
 
 LEARNING_RATE = 3e-4
-BATCH_SIZE = 80
+BATCH_SIZE = 64
 EPOCHS = 20
 
 IMG_SIZE = 299
