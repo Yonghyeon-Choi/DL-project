@@ -16,7 +16,7 @@ import os
 """
 # used in fit function
 LEARNING_RATE = 3e-4
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 EPOCHS = 100
 # used in CNN-RNN model
 IMG_SIZE = 299
@@ -186,7 +186,7 @@ history, sequence_model = run_experiment()
 plt.title('Accuracy')
 plt.plot(history.history['accuracy'], 'b')
 plt.plot(history.history['val_accuracy'], 'r')
-plt.xlabel('Epoch '+str(EPOCHS))
+plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.legend(['Accuracy', 'Val_Accuracy'], loc='best')
 plt.savefig(os.path.join('02_result', 'Accuracy' + this_time + '.png'), dpi=200)
@@ -195,7 +195,7 @@ plt.clf()
 plt.title('Loss')
 plt.plot(history.history['loss'], '--b')
 plt.plot(history.history['val_loss'], '--r')
-plt.xlabel('Epoch '+str(EPOCHS))
+plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend(['Loss', 'Val_Loss'], loc='best')
 plt.savefig(os.path.join('02_result', 'Loss' + this_time + '.png'), dpi=200)
