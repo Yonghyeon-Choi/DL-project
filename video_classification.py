@@ -171,12 +171,12 @@ def get_sequence_model():
 
 
 this_time = dt.datetime.strftime(dt.datetime.now(), "%Y-%m-%d-%H-%M-%S")
-result = open(os.path.join("result", this_time+".txt"),
+result = open(os.path.join("02_result", this_time + ".txt"),
               mode="wt", encoding="utf-8")
 
 
 def run_experiment():
-    filepath = os.path.join("save", "video_classifier", this_time)
+    filepath = os.path.join("99_save", "video_classifier", this_time)
     checkpoint = keras.callbacks.ModelCheckpoint(
         filepath, save_weights_only=True, save_best_only=True, verbose=1
     )
@@ -206,7 +206,7 @@ plt.plot(history.history['val_accuracy'], 'r')
 plt.xlabel('Epoch '+str(EPOCHS))
 plt.ylabel('Accuracy')
 plt.legend(['Accuracy', 'Val_Accuracy'], loc='best')
-plt.savefig(os.path.join('result', 'Accuracy'+this_time+'.png'), dpi=200)
+plt.savefig(os.path.join('02_result', 'Accuracy' + this_time + '.png'), dpi=200)
 plt.clf()
 
 plt.title('Loss')
@@ -215,7 +215,7 @@ plt.plot(history.history['val_loss'], '--r')
 plt.xlabel('Epoch '+str(EPOCHS))
 plt.ylabel('Loss')
 plt.legend(['Loss', 'Val_Loss'], loc='best')
-plt.savefig(os.path.join('result', 'Loss'+this_time+'.png'), dpi=200)
+plt.savefig(os.path.join('02_result', 'Loss' + this_time + '.png'), dpi=200)
 
 
 def prepare_single_video(frames):

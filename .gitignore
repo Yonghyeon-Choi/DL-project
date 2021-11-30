@@ -1,5 +1,4 @@
 /video/
-/save/video_classifier/
-org.py
+/99_save/video_classifier/
 video.tar
 .DS_Store
