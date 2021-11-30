@@ -189,7 +189,7 @@ def run_experiment():
         batch_size=BATCH_SIZE,
         shuffle=True,
         callbacks=[checkpoint,
-                   EarlyStopping(patience=5, monitor='val_loss')]
+                   EarlyStopping(patience=3, monitor='val_loss')]
     )
     seq_model.load_weights(filepath)
     _, accuracy = seq_model.evaluate([test_data[0], test_data[1]], test_labels)
