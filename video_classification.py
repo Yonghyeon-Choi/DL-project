@@ -14,11 +14,11 @@ import os
 """
 ## Define hyperparameters
 """
-
+# used in fit function
 LEARNING_RATE = 3e-4
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 EPOCHS = 100
-
+# used in CNN-RNN model
 IMG_SIZE = 299
 MAX_SEQ_LENGTH = 10
 NUM_FEATURES = 2048
@@ -36,14 +36,6 @@ print(f"Total videos for validation: {len(val_df)}")
 print(f"Total videos for testing: {len(test_df)}")
 
 
-def crop_center_square(frame):
-    y, x = frame.shape[0:2]
-    min_dim = min(y, x)
-    start_x = (x // 2) - (min_dim // 2)
-    start_y = (y // 2) - (min_dim // 2)
-    return frame[start_y : start_y + min_dim, start_x : start_x + min_dim]
-
-
 def load_video(path, max_frames=0, resize=(IMG_SIZE, IMG_SIZE)):
     cap = cv2.VideoCapture(path)
     frames = []
@@ -52,7 +44,6 @@ def load_video(path, max_frames=0, resize=(IMG_SIZE, IMG_SIZE)):
             ret, frame = cap.read()
             if not ret:
                 break
-            # frame = crop_center_square(frame)
             frame = cv2.resize(frame, resize)
             frame = frame[:, :, [2, 1, 0]]
             frames.append(frame)
@@ -93,27 +84,20 @@ def prepare_all_videos(df, root_dir):
     labels = df["tag"].values
     labels = label_processor(labels[..., None]).numpy()
 
-    # `frame_masks` and `frame_features` are what we will feed to our sequence model.
-    # `frame_masks` will contain a bunch of booleans denoting if a timestep is
-    # masked with padding or not.
     frame_masks = np.zeros(shape=(num_samples, MAX_SEQ_LENGTH), dtype="bool")
     frame_features = np.zeros(
         shape=(num_samples, MAX_SEQ_LENGTH, NUM_FEATURES), dtype="float32"
     )
 
-    # For each video.
     for idx, path in enumerate(tqdm(video_paths)):
-        # Gather all its frames and add a batch dimension.
         frames = load_video(os.path.join(root_dir, path))
         frames = frames[None, ...]
 
-        # Initialize placeholders to store the masks and features of the current video.
         temp_frame_mask = np.zeros(shape=(1, MAX_SEQ_LENGTH,), dtype="bool")
         temp_frame_features = np.zeros(
             shape=(1, MAX_SEQ_LENGTH, NUM_FEATURES), dtype="float32"
         )
 
-        # Extract features from the frames of the current video.
         for i, batch in enumerate(frames):
             video_length = batch.shape[0]
             length = min(MAX_SEQ_LENGTH, video_length)
@@ -137,9 +121,10 @@ val_data, val_labels = prepare_all_videos(val_df, os.path.join("video", "val"))
 print()
 print("prepare test data")
 test_data, test_labels = prepare_all_videos(test_df, os.path.join("video", "test"))
-
+print()
 print(f"Frame features in train set: {train_data[0].shape}")
 print(f"Frame masks in train set: {train_data[1].shape}")
+print()
 
 
 def get_sequence_model():
@@ -148,8 +133,6 @@ def get_sequence_model():
     frame_features_input = keras.Input((MAX_SEQ_LENGTH, NUM_FEATURES))
     mask_input = keras.Input((MAX_SEQ_LENGTH,), dtype="bool")
 
-    # Refer to the following tutorial to understand the significance of using `mask`:
-    # https://keras.io/api/layers/recurrent_layers/gru/
     x = keras.layers.GRU(32, return_sequences=True)(
         frame_features_input, mask=mask_input
     )
