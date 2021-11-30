@@ -1,5 +1,6 @@
 from tensorflow import keras
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
 
 import matplotlib.pyplot as plt
@@ -187,7 +188,8 @@ def run_experiment():
         epochs=EPOCHS,
         batch_size=BATCH_SIZE,
         shuffle=True,
-        callbacks=[checkpoint]
+        callbacks=[checkpoint,
+                   EarlyStopping(patience=5, monitor='val_loss')]
     )
     seq_model.load_weights(filepath)
     _, accuracy = seq_model.evaluate([test_data[0], test_data[1]], test_labels)
