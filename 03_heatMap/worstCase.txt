@@ -1,0 +1,55 @@
+worst case
+
+41 Test video path: beauty02427.mp4 요리하는 것 같기도...?
+  Actual: beauty
+  cooking: 75.54%
+  beauty: 16.02%
+  pet:  3.26%
+  pokemon:  2.67%
+  keyboard:  2.33%
+  football:  0.19%
+
+1038 Test video path: cooking02963.mp4 타코야끼 판은 키보드가 맞을지도...?
+  Actual: cooking
+  keyboard: 75.04%
+  football: 11.57%
+  pet: 10.10%
+  cooking:  2.01%
+  beauty:  1.13%
+  pokemon:  0.16%
+
+1564 Test video path: football02297.mp4 전설의 포켓몬 레알마드리드 호나우두!!
+  Actual: football
+  pokemon: 60.63%
+  pet: 15.03%
+  cooking: 10.05%
+  football:  9.36%
+  beauty:  3.06%
+  keyboard:  1.86%
+
+1848 Test video path: keyboard02067.mp4
+  Actual: keyboard
+  cooking: 39.00%
+  beauty: 22.96%
+  pet: 20.91%
+  keyboard: 12.99%
+  pokemon:  3.44%
+  football:  0.69%
+
+2210 Test video path: pet01962.mp4 사료는 동물의 요리 맞지
+  Actual: pet
+  cooking: 93.94%
+  pokemon:  3.35%
+  pet:  1.36%
+  beauty:  1.13%
+  keyboard:  0.19%
+  football:  0.03%
+
+2788 Test video path: pokemon02371.mp4 라벨링을 수동으로 하지 못한 예시
+  Actual: pokemon
+  keyboard: 93.14%
+  football:  4.76%
+  pet:  1.76%
+  beauty:  0.25%
+  cooking:  0.10%
+  pokemon:  0.00%

@@ -1,0 +1,55 @@
+best case
+
+18 Test video path: beauty02404.mp4
+  Actual: beauty
+  beauty: 96.12%
+  keyboard:  2.36%
+  cooking:  1.25%
+  pet:  0.21%
+  pokemon:  0.03%
+  football:  0.02%
+
+962 Test video path: cooking02887.mp4 요리의 근본 고든램지
+  Actual: cooking
+  cooking: 95.95%
+  pokemon:  1.84%
+  beauty:  1.55%
+  pet:  0.52%
+  keyboard:  0.12%
+  football:  0.02%
+
+1404 Test video path: football02137.mp4 근본 축구 클럽 레알마드리드 13-14시즌 챔피언리스리그
+  Actual: football
+  football: 89.05%
+  keyboard:  8.42%
+  pet:  2.18%
+  cooking:  0.20%
+  pokemon:  0.14%
+  beauty:  0.01%
+
+1725 Test video path: keyboard01944.mp4
+  Actual: keyboard
+  keyboard: 96.10%
+  football:  2.72%
+  pet:  0.98%
+  beauty:  0.16%
+  cooking:  0.04%
+  pokemon:  0.00%
+
+2318 Test video path: pet02070.mp4 천호지를 걷는 댕댕이
+  Actual: pet
+  pet: 95.82%
+  pokemon:  2.48%
+  keyboard:  0.97%
+  cooking:  0.52%
+  football:  0.17%
+  beauty:  0.03%
+
+3135 Test video path: pokemon02718.mp4
+  Actual: pokemon
+  pokemon: 91.19%
+  pet:  5.77%
+  cooking:  1.93%
+  football:  0.82%
+  beauty:  0.24%
+  keyboard:  0.06%
