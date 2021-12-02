@@ -1,3 +1,7 @@
+"""
+reference
+https://keras.io/examples/vision/video_classification/
+"""
 from tensorflow import keras
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
