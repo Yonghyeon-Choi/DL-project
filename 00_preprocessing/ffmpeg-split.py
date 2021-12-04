@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-
+"""
+reference
+https://github.com/c0decracker/video-splitter
+"""
 from __future__ import print_function
 
 import csv

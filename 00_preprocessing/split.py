@@ -1,7 +1,7 @@
 import os
 from subprocess import call
 
-
+# CPU 부하량이 크고, 실행시간이 꽤나 깁니다.
 Dir = './pokemon/'
 
 Names = os.listdir(Dir)
