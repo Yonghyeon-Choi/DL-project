@@ -30,7 +30,7 @@ NUM_FEATURES = 2048
 """
 ## Data preparation
 """
-
+curPath = os.path.dirname(os.path.abspath(__file__))
 train_df = pd.read_csv(os.path.join("csv", "train.csv"))
 val_df = pd.read_csv(os.path.join("csv", "val.csv"))
 test_df = pd.read_csv(os.path.join("csv", "test.csv"))
@@ -118,13 +118,22 @@ def prepare_all_videos(df, root_dir):
 
 print()
 print("prepare train data")
-train_data, train_labels = prepare_all_videos(train_df, os.path.join("video", "train"))
+train_data, train_labels = prepare_all_videos(train_df,
+                                              os.path.join(
+                                                  os.path.dirname(os.path.abspath(__file__)),
+                                                  "video", "train"))
 print()
 print("prepare val data")
-val_data, val_labels = prepare_all_videos(val_df, os.path.join("video", "val"))
+val_data, val_labels = prepare_all_videos(val_df,
+                                          os.path.join(
+                                              os.path.dirname(os.path.abspath(__file__)),
+                                              "video", "val"))
 print()
 print("prepare test data")
-test_data, test_labels = prepare_all_videos(test_df, os.path.join("video", "test"))
+test_data, test_labels = prepare_all_videos(test_df,
+                                            os.path.join(
+                                                os.path.dirname(os.path.abspath(__file__)),
+                                                "video", "test"))
 print()
 print(f"Frame features in train set: {train_data[0].shape}")
 print(f"Frame masks in train set: {train_data[1].shape}")
