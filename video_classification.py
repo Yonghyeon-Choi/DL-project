@@ -14,6 +14,8 @@ import datetime as dt
 from tqdm import tqdm
 import cv2
 import os
+import time
+start = time.time()
 
 """
 ## Define hyperparameters
@@ -253,4 +255,6 @@ for i in range(len(test_videos)):
     result.write(f"  Actual: {test_tags[i]}\n")
     test_frames = sequence_prediction(test_videos[i])
 
+print()
+print("execute time :", time.time()-start)
 result.close()
