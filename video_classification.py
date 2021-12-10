@@ -222,7 +222,7 @@ def prepare_single_video(frames):
     frame_features = np.zeros(shape=(1, MAX_SEQ_LENGTH, NUM_FEATURES), dtype="float32")
 
     for i, batch in enumerate(frames):
-        video_length = batch.shape[0]
+        video_length = len(frames[0])
         length = min(MAX_SEQ_LENGTH, video_length)
         for j in range(length):
             frame_features[i, j, :] = feature_extractor.predict(batch[None, j, :])
