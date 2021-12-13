@@ -26,7 +26,7 @@ BATCH_SIZE = 64
 EPOCHS = 100
 # used in CNN-RNN model
 IMG_SIZE = 299
-MAX_SEQ_LENGTH = 300
+MAX_SEQ_LENGTH = 10
 NUM_FEATURES = 2048
 
 """
@@ -105,7 +105,7 @@ def prepare_all_videos(df, root_dir):
         )
 
         for i, batch in enumerate(frames):
-            video_length = len(frames[0])
+            video_length = batch.shape[0]   # all frame => len(frames[0])
             length = min(MAX_SEQ_LENGTH, video_length)
             for j in range(length):
                 temp_frame_features[i, j, :] = feature_extractor.predict(
@@ -222,7 +222,7 @@ def prepare_single_video(frames):
     frame_features = np.zeros(shape=(1, MAX_SEQ_LENGTH, NUM_FEATURES), dtype="float32")
 
     for i, batch in enumerate(frames):
-        video_length = len(frames[0])
+        video_length = batch.shape[0]   # all frame => len(frames[0])
         length = min(MAX_SEQ_LENGTH, video_length)
         for j in range(length):
             frame_features[i, j, :] = feature_extractor.predict(batch[None, j, :])
